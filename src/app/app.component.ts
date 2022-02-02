@@ -25,12 +25,27 @@ import { Component } from '@angular/core';
           background: 'pink'
         })),
         animate(500)
+      ]),
+      //'void => *
+      transition(':enter', [ 
+        style({ opacity: 0 }),           
+        animate('850ms ease-in-out')
+      ]),
+      //* => void
+      transition(':leave', [ 
+        style({ opacity: 1 }),           
+        animate('750ms', style ({
+          opacity: 0,
+          transform: 'scale(1.2)'
+        }))
       ])
     ])
   ]
 })
 export class AppComponent {
  boxState = 'start';
+ visible = true;
+
 
  animation(){
    this.boxState = this.boxState === 'end' ? 'start' : 'end'
