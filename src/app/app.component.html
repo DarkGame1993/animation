@@ -1,9 +1,12 @@
 <button (click)="animation()">Animation</button>
+<button (click)="boxState = 'spetial'">Set Spacial State</button>
+
 <hr>
+
 <div class="wrap">
     
     <div 
         class="box"
         [@box]="boxState"
-        >{{boxState | uppercase}}</div>
+        ><h4>{{boxState | uppercase}}</h4></div>
 </div>

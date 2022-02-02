@@ -12,8 +12,20 @@ import { Component } from '@angular/core';
         background: 'red',
         transform: 'scale(1.2)'
       })),
+      state('spetial', style({
+        background: 'orange',
+        transform: 'scale(0.5)',
+        borderRadius: '50%'
+      })),
       transition('start => end', animate(450)),
-      transition('end => start', animate('800ms ease-in-out'))
+      transition('end => start', animate('800ms ease-in-out')),
+      transition('spetial <=> *', [
+        style({ background: 'green'}),
+        animate('1s', style({ 
+          background: 'pink'
+        })),
+        animate(500)
+      ])
     ])
   ]
 })
