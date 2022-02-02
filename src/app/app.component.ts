@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger, group, sequence } from '@angular/animations';
+import { animate, state, style, transition, trigger, group, sequence, query } from '@angular/animations';
 import { Component } from '@angular/core';
 
 @Component({
@@ -20,11 +20,17 @@ import { Component } from '@angular/core';
       transition('start => end', animate(450)),
       transition('end => start', animate('800ms ease-in-out')),
       transition('spetial <=> *', [
-        style({ background: 'green'}),
-        animate('1s', style({ 
-          background: 'pink'
-        })),
-        animate(500)
+        group([
+          query('h4', animate(1500, style({
+            fontSize: '.5rem',
+            color: 'red'
+          }))),
+          style({ background: 'green'}),
+          animate('1s', style({ 
+            background: 'pink'
+          })),
+          animate(500)
+        ]),
       ]),
       //'void => *
       transition(':enter', [ 
